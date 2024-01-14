@@ -4,9 +4,8 @@ class FooterElement extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
-      <p>copyright &#169; 2023 - Doyan Makan</p>
-    `;
+    const copyrightText = '© 2023 - Doyan Makan';
+    this.innerHTML = `<p>${copyrightText}</p>`;
   }
 }
 

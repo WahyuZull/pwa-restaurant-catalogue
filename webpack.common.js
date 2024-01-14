@@ -1,10 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: {
@@ -49,7 +49,7 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/'),
           globOptions: {
             ignore: ['**/images/**'],
-          }
+          },
         },
       ],
     }),
@@ -62,9 +62,9 @@ module.exports = {
           cacheName: 'assets',
           expiration: {
             maxAgeSeconds: 60 * 60 * 24 * 14,
-          }
-        }
-      }]
+          },
+        },
+      }],
     }),
     new WebpackPwaManifest({
       name: 'Doyan Makan Apps',
@@ -91,6 +91,6 @@ module.exports = {
         },
       ],
     }),
-    new BundleAnalyzerPlugin({}),
+    // new BundleAnalyzerPlugin({}),
   ],
 };

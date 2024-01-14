@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/no-unresolved */
 import RestaurantSource from '../data/restaurant-source';
 import { createRestaurantReviewsTemplate } from '../view/templates/template-creator';
 
@@ -25,6 +28,11 @@ const AddReviewButton = {
 
       const result = await RestaurantSource.addReview(newReview);
       const { customerReviews } = result;
+
+      await Swal.fire({
+        text: 'Terima kasih atas review anda',
+        icon: 'success',
+      });
 
       this._reviewContainer.innerHTML = customerReviews.map(
         (review) => createRestaurantReviewsTemplate(review),

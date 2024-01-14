@@ -1,10 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -28,8 +28,8 @@ module.exports = merge(common, {
   optimization: {
     splitChunks: {
       chunks: 'all',
-      minSize: 20000,
-      maxSize: 50000,
+      minSize: 10000,
+      maxSize: 25000,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
@@ -59,7 +59,7 @@ module.exports = merge(common, {
           options: {
             encodeOptions: {
               jpeg: {
-                quality: 100,
+                quality: 80,
               },
               webp: {
                 lossless: true,
@@ -80,8 +80,8 @@ module.exports = merge(common, {
         extractComments: true,
         terserOptions: {
           compress: true,
-        }
-      })
+        },
+      }),
     ],
   },
   plugins: [
@@ -95,11 +95,6 @@ module.exports = merge(common, {
         },
       ],
       overrideExtension: true,
-    }),
-    new CompressionPlugin({
-      algorithm: 'gzip',
-      test: /\.(js|css|html|svg)$/,
-      minRatio: 0.8,
     }),
   ],
 });

@@ -1,16 +1,15 @@
 import CONFIG from '../../globals/config';
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const createRestaurantItemTemplate = (resto) => `
   <div class="restaurant-item">
     <div class="restaurant-item-header">
       <picture>
-        <source media:all and (max-width: 600px) type"image/webp" srcset="${resto.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}">
-        <source media:all and (max-width: 600px) type"image/jpeg" srcset="${resto.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}">
+        <source media:all type"image/webp" data-srcset="${resto.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}">
+        <source media:all type"image/jpeg" data-srcset="${resto.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}">
         <img
-          data-src="${resto.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}"
-          class="restaurant-item-image lazyload"
+          src="${resto.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}"
+          class="restaurant-item-image"
+          loading="lazy"
           alt="${resto.name}"
         />
       </picture>
@@ -35,11 +34,11 @@ const createRestaurantItemTemplate = (resto) => `
 const createRestaurantDetailTemplate = (resto) => `
   <div class="content-item">
     <picture>
-      <source  media:all and (min-width: 961px) type="image/webp" srcset="${CONFIG.BASE_IMAGE_URL_LARGE + resto.pictureId}" alt="${resto.name}">
-      <source  media:all and (min-width: 961px) type="image/jpeg" srcset="${CONFIG.BASE_IMAGE_URL_LARGE + resto.pictureId}" alt="${resto.name}">
-      <source  media:all and (min-width: 600px and max-width: 960px) type="image/webp" srcset="${CONFIG.BASE_IMAGE_URL_MEDIUM + resto.pictureId}" alt="${resto.name}">
-      <source  media:all and (min-width: 600px and max-width: 960px) type="image/jpeg" srcset="${CONFIG.BASE_IMAGE_URL_MEDIUM + resto.pictureId}" alt="${resto.name}">
-      <img class="resto-poster lazyload" data-src="${CONFIG.BASE_IMAGE_URL_LARGE + resto.pictureId}" alt="${resto.name}" />
+      <source  media:all and (min-width: 961px) type="image/webp" data-srcset="${CONFIG.BASE_IMAGE_URL_LARGE + resto.pictureId}" alt="${resto.name}">
+      <source  media:all and (min-width: 961px) type="image/jpeg" data-srcset="${CONFIG.BASE_IMAGE_URL_LARGE + resto.pictureId}" alt="${resto.name}">
+      <source  media:all and (min-width: 600px and max-width: 960px) type="image/webp" data-srcset="${CONFIG.BASE_IMAGE_URL_MEDIUM + resto.pictureId}" alt="${resto.name}">
+      <source  media:all and (min-width: 600px and max-width: 960px) type="image/jpeg" data-srcset="${CONFIG.BASE_IMAGE_URL_MEDIUM + resto.pictureId}" alt="${resto.name}">
+      <img class="resto-poster" loading="lazy" data-src="${CONFIG.BASE_IMAGE_URL_LARGE + resto.pictureId}" alt="${resto.name}" />
     </picture>
       <!-- Header -->
       <div class="resto-header">
@@ -151,8 +150,8 @@ const createErrorRoutesTemplate = () => `
   <div class="error-page">
     <div class="error-content">
       <picture>
-        <source media="all and (max-width: 600px)" type="image/webp" srcset="">
-        <source media="all and (max-width: 600px)" type="image/jpeg" srcset="">
+        <source media="all and (max-width: 600px)" type="image/webp" data-srcset="./error.webp">
+        <source media="all and (max-width: 600px)" type="image/jpeg" data-srcset="./error.webp">
         <img alt="image-error" src="./error.webp" class="img-error">
       </picture>
       <h2 class="error-title">404</h2>
@@ -176,7 +175,7 @@ const createNoFavoriteRestaurantTemplate = () => `
 
 const createSkeletonTemplate = (count) => {
   let template = '';
-  
+
   for (let i = 0; i < count; i += 1) {
     template += `
       <div class="restaurant-item">

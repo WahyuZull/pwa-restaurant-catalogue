@@ -5,9 +5,11 @@ class HeroElement extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <div class="hero-inner">
-        <h1 class="hero-title">Doyan Makan</h1>
-        <p class="hero-tagline">Yuk makan-makan! Jangan takut gendut!</p>
+      <div class="hero">
+        <div class="hero-inner">
+          <h1 class="hero-title">Doyan Makan</h1>
+          <p class="hero-tagline">Yuk makan-makan! Jangan takut gendut!</p>
+        </div>
       </div>
     `;
   }

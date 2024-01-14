@@ -10,13 +10,14 @@ $background-color_2: #cc704b;
 $background-color_3: #614124;
 
 @import url("https://fonts.googleapis.com/css2?family=Bad+Script&family=Poppins:ital,wght@0,400;0,500;1,700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
-  min-height: 100vh;
   font-family: $font-family;
   font-size: 12px;
   color: $color_2;
@@ -28,12 +29,13 @@ Skip to content
 */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -45px;
   left: 0;
-  padding: 8px;
   background-color: $background-color_3;
   color: $color_3;
-  z-index: 100;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: 9999;
   &:focus {
     top: 0;
   }
@@ -51,20 +53,19 @@ header-element {
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 100;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .logo {
   text-align: center;
-  display: flex;
-  align-items: center;
   padding: 12px 24px;
   font-size: 24px;
   font-weight: bold;
   a {
     text-decoration: none;
     color: $color_3;
+    padding: 12px;
     min-width: 44px;
     min-height: 44px;
   }
@@ -73,7 +74,6 @@ header-element {
 .nav-menu {
   display: flex;
   padding: 8px;
-  text-align: center;
   align-items: center;
   justify-content: center;
   button {
@@ -117,9 +117,9 @@ header-element {
 /*
 Hero
 */
-hero-element {
+.hero {
   display: flex;
-  height: 600px;
+  height: 400px;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -151,8 +151,8 @@ main {
   width: 100%;
   margin: 0 auto;
   .content {
-    padding: 64px 32px;
-    margin-top: 32px;
+    padding: 0px, 20px;
+    margin-top: 24px;
     .content-title {
       text-align: left;
       font-size: 36px;
@@ -460,13 +460,13 @@ Restaurant
         font-weight: 700;
       }
       input {
-        padding: 16px;
+        padding: 20px;
         border-radius: 5px;
         border: 0;
       }
       textarea {
         height: 100px;
-        padding: 16px;
+        padding: 20px;
         border-radius: 5px;
         border: 0;
       }
@@ -529,11 +529,10 @@ Error Page
 Footer
 */
 footer-element {
-  display: flex;
   width: 100%;
+  display: flex;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   background-color: $background-color_3;
   color: $color_3;
   padding: 24px;
@@ -576,8 +575,8 @@ footer-element {
   }
 }
 @media screen and (min-width: 600px) {
-  hero-element {
-    background-image: url("/dist/heros/hero-image-small.webp");
+  .hero {
+    background-image: url("/dist/heros/hero-image-small.jpg");
     background-size: cover;
     background-position: center;
   }
@@ -596,13 +595,13 @@ footer-element {
   .nav {
     z-index: 100;
     background-color: $background-color_1;
-    width: calc(100% - 15px);
+    width: 100%;
     top: 64px;
     position: absolute;
-    -webkit-transform: translate3d(0, -150%, 0);
-    -moz-transform: translate3d(0, -150%, 0);
-    -o-transform: translate3d(0, -150%, 0);
-    transform: translate3d(0, -150%, 0);
+    // -webkit-transform: translate3d(0, 0, -150%);
+    // -moz-transform: translate3d(0, 0, -150%);
+    // -o-transform: translate3d(0, 0, -150%);
+    transform: translate(-150%, 0);
     transition: transform 0.3s ease-in-out;
     .nav-list {
       .nav-item {

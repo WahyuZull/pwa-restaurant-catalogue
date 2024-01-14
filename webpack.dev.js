@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { merge } = require('webpack-merge');
 const path = require('path');
 const common = require('./webpack.common');
@@ -7,6 +8,7 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     static: path.resolve(__dirname, 'dist'),
+    compress: true,
     open: true,
     port: 9000,
     client: {
@@ -15,6 +17,5 @@ module.exports = merge(common, {
         warnings: true,
       },
     },
-    compress: true,
   },
 });

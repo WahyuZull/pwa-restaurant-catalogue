@@ -6,11 +6,10 @@
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "serve": "http-server dist",
-    "lint": "eslint ./",
+    "lint": "eslint ./src",
     "build-serve": "npm run build && npm run serve",
     "test": "karma start",
-    "e2e": "codeceptjs run --steps",
-    "build-image": "node sharp.js"
+    "e2e": "codeceptjs run --steps"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
@@ -20,11 +19,10 @@
     "@babel/preset-env": "^7.18.2",
     "babel-loader": "^8.2.5",
     "codeceptjs": "^3.4.1",
-    "compression-webpack-plugin": "^10.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "html-webpack-plugin": "^5.5.0",
@@ -42,6 +40,7 @@
     "puppeteer": "^19.7.3",
     "sass": "^1.58.0",
     "sass-loader": "^10.4.1",
+    "sharp": "^0.31.3",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.7",
     "webpack": "^5.75.0",
@@ -55,9 +54,8 @@
   },
   "dependencies": {
     "idb": "^7.1.1",
-    "lazysizes": "^5.3.2",
     "regenerator-runtime": "^0.13.9",
-    "workbox-window": "^6.5.4"
+    "workbox-window": "^6.6.0"
   },
   "description": ""
 }

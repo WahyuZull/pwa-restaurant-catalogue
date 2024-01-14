@@ -20,6 +20,7 @@ class App {
     });
   }
 
+  // eslint-disable-next-line consistent-return
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
@@ -27,12 +28,11 @@ class App {
       this._content.innerHTML = await page.render();
       await page.afterRender();
     } catch (error) {
-      const errorRender = (error) => {
+      const errorRender = () => {
         this._content.innerHTML = createErrorRoutesTemplate(error);
-      }
+      };
       return errorRender(error);
     }
-
 
     const skipLink = document.querySelector('.skip-link');
     skipLink.addEventListener('click', (e) => {

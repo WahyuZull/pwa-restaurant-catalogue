@@ -7,4 +7,5 @@ const createLikeButtonPresenterWithResto = async (restaurants) => {
   });
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { createLikeButtonPresenterWithResto };

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const assert = require('assert');
 
 Feature('Liking Resto');
@@ -6,7 +7,7 @@ Before(({ I }) => {
   I.amOnPage('/#/favorite');
 });
 
-Scenario('Show empty favorite restaurant',  ({ I }) => {
+Scenario('Show empty favorite restaurant', ({ I }) => {
   I.seeElement('.content');
   I.see('Anda belum menambahkan Restaurant Favorite', '.not-found-message');
 });
@@ -19,21 +20,21 @@ Scenario('Liking one restaurant and Unliking the restaurant', async ({ I }) => {
   const firstResto = locate('.restaurant-item-name a').first();
   const firstRestoTitle = await I.grabTextFrom(firstResto);
   I.click(firstResto);
-  
+
   I.waitForElement('#likeButton', 5);
   I.seeElement('#likeButton');
   I.click('#likeButton');
-  
+
   I.amOnPage('/#/favorite');
   I.seeElement('.restaurant-item');
-  
+
   const likedRestoTitle = await I.grabTextFrom('.restaurant-item-name');
   assert.strictEqual(firstRestoTitle, likedRestoTitle);
 
   I.waitForElement('.restaurant-item-name a', 5);
   I.seeElement('.restaurant-item-name a');
   I.click(locate('.restaurant-item-name a').first());
- 
+
   I.waitForElement('#likeButton', 5);
   I.seeElement('#likeButton');
   I.click('#likeButton');
@@ -50,9 +51,15 @@ Scenario('Add review restaurant', ({ I }) => {
   I.seeElement('.restaurant-item-name a');
   I.click(locate('.restaurant-item-name a').first());
 
+  I.waitForElement('#inputName', 5);
   I.seeElement('#inputName');
   I.fillField('#inputName', 'Dicoding');
+
+  I.waitForElement('#inputReview', 5);
+  I.seeElement('#inputReview');
   I.fillField('#inputReview', 'Enak');
+
+  I.seeElement('#submitReview');
   I.click('#submitReview');
 
   I.seeElement('.review-container');
